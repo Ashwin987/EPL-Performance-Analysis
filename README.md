@@ -1,39 +1,27 @@
-EPL Team Performance Analysis Using Modeling & Visualization
+# ⚽ EPL Team Performance Analysis Using Modeling & Visualization
 
-Author: Ashwin Ramaseshan
+**Author:** Ashwin Ramaseshan  
 
-Project Overview
+## Overview
+The English Premier League (EPL) is a highly competitive, financially driven environment where club success is not always proportional to spending. This project investigates the primary drivers of team success over multiple seasons to identify key performance indicators and uncover teams that efficiently outperform relative to their financial resources.
 
-The English Premier League (EPL) is a highly competitive, financially-driven environment where club success is not always proportional to spending. This project investigates the primary drivers of team success over multiple seasons to identify key performance indicators and uncover teams that efficiently overperform relative to their financial resources.
+## Data & Methodology
+- **Data Sources:** Team-level statistics collected from FBref and Transfermarkt
+- **Preparation:** Merged seasonal performance metrics (wins, league position, net spend) with squad characteristics (age, value) using R’s `sqldf` package
+- **Relative Spending Metric:** Created a normalized spending measure by dividing each team’s net spend by the league average
+- **Clustering:** Applied K-means clustering to identify “efficient buyers” that achieve high win totals despite limited resources
+- **Modeling:** Implemented Poisson regression models, as total wins are a count-based outcome
 
-Data & Methodology
+## Key Findings
+- **Spending Impact:** Relative spending is a consistent and statistically significant positive predictor of total wins
+- **Squad Age:** Older average squad age showed a statistically significant negative association with performance
+- **Consistency vs. Turnover:** Higher numbers of players signed negatively impacted performance, suggesting reduced squad cohesion
+- **Model Fit:** The best-performing model included Relative Spend, Squad Age, and Players Signed (lowest AIC)
+- **Strategic Success:** Clubs such as Brighton & Hove Albion and Brentford outperform financial peers through efficient squad management
 
-    Data Sources: Team-level statistics were collected from FBref and Transfermarkt.
+## Tools
+- **Languages:** R (`sqldf`, `glm`)
+- **Visualization:** Tableau
 
-Preparation: Merged seasonal stats (wins, league position, net spend) with squad metrics (age, value) using R's sqldf package.
-
-Relative Spending Metric: Created a custom variable by dividing a team’s net spend by the league average to create a common scale for meaningful analysis.
-
-Clustering: Applied K-means clustering to identify "efficient buyers" who achieve high win totals despite limited resources.
-
-Modeling: Implemented Poisson Regression models because the target variable, Total Wins, is a count variable.
-
-Key Findings
-
-    Spending Impact: Relative spending is a consistent and statistically significant positive predictor (p<0.001) of total wins.
-
-Squad Age: Older average squad ages showed a statistically significant negative association with total wins.
-
-Consistency vs. Turnover: The full model revealed that Total Players Signed had a negative effect on performance, suggesting that frequent squad changes may hurt team consistency.
-
-Model Fit: Model 3 (Relative Spend + Age + Players Signed) was the best-fitting model with the lowest AIC (6228.9).
-
-Strategic Success: Clubs like Brighton & Hove Albion and Brentford successfully outperform their financial peers through efficient squad management.
-
-Tools Used
-
-    Languages: R (sqldf, glm) 
-
-Visualization: Tableau
-
-Concepts: Poisson Regression, K-Means Clustering, Feature Engineering
+## Notes
+This project focuses on understanding efficiency and performance drivers in the EPL using statistical modeling and clustering techniques.
